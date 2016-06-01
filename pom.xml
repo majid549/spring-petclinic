@@ -8,6 +8,14 @@
 
     <name>petclinic</name>
     <packaging>war</packaging>
+    
+    
+<distributionManagement>
+   <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>http://52.40.187.46:8080/nexus-latest/content/repositories/testrepository/</url>
+   </snapshotRepository>
+</distributionManagement>
 
     <properties>
 
