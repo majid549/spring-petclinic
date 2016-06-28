@@ -45,7 +45,7 @@
 <distributionManagement>
    <snapshotRepository>
       <id>nexus-snapshots</id>
-      <url>http://52.36.84.3:8080/nexus-latest/content/repositories/petclinicrepo/</url>
+      <url>http://52.36.7.16:8080/nexus-latest/content/repositories/petclinicrepo/</url>
    </snapshotRepository>
 </distributionManagement>
     <dependencyManagement>
@@ -55,7 +55,7 @@
                 <groupId>io.spring.platform</groupId>
                 <artifactId>platform-bom</artifactId>
                 <version>${spring-io-platform.version}</version>
-                <type>pom</type>
+                <type>pom</type>http://52.36.7.16:8080/nexus-latest/content/repositories/petclinicrepo/
                 <scope>import</scope>
             </dependency>
         </dependencies>
