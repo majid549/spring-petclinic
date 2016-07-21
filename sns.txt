@@ -1,0 +1,43 @@
+http://docs.aws.amazon.com/cli/latest/userguide/cli-sqs-queue-sns-topic.html
+ 
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-ec2.html#scenario-ec2-instance-with-vol-and-tags
+ 
+http://askubuntu.com/questions/228304/how-do-i-run-a-script-at-start-up
+ 
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-sns.html
+ 
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stack.html#cfn-cloudformation-stack-notificationarns
+ 
+http://rogueleaderr.com/post/48795010760/how-to-notifyemail-yourself-when-an-ec2-instance
+ 
+http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-stack.html
+ 
+https://linuxconfig.org/understanding-regular-expressions
+ 
+http://unix.stackexchange.com/questions/84922/extract-a-part-of-one-line-from-a-file-with-sed
+ 
+ 
+ 
+ 
+aws sns create-topic --name pipeline
+aws sns subscribe --topic-arn arn:aws:sns:us-west-2:123456789012:my-topic --protocol email --notification-endpoint emailusername@example.com
+ 
+ 
+#!/bin/bash
+public=`curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
+aws sns create-topic --name pipeline
+aws sns subscribe --topic-arn arn:aws:sns:us-west-2:596872254694:pipeline --protocol email --notification-endpoint mohammad.a.khan@capgemini.com
+aws sns publish --topic-arn arn:aws:sns:us-west-2:596872254694:pipeline --message "your ip address is : $public" --subject "AWS SNS Testing"
+ 
+wget test.sh
+echo "basestack ip : " >> test.sh
+echo `curl -s http://169.254.169.254/latest/meta-data/public-ipv4` >> test.sh
+aws s3 cp test.sh s3://
+ 
+ 
+ 
+sed -n 's/\(arn\)/\1/p' /tmp/majid.txt
+ 
+sed -n 's/.*\(arn\).pipeline/\1/p' /tmp/majid.txt
+ 
+sed -n 's/\(arn\).*/\1/p' /tmp/majid.txt             ---------->"TopicArn": "arn
