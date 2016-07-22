@@ -41,3 +41,6 @@ sed -n 's/\(arn\)/\1/p' /tmp/majid.txt
 sed -n 's/.*\(arn\).pipeline/\1/p' /tmp/majid.txt
  
 sed -n 's/\(arn\).*/\1/p' /tmp/majid.txt             ---------->"TopicArn": "arn
+
+
+http://www.cyberciti.biz/faq/unix-linux-sed-print-only-matching-lines-command/
