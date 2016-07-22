@@ -1,0 +1,73 @@
+-----------------In a single instance(probably rundeck)-----------------
+
+wget https://s3.amazonaws.com/sruthi-test/sns_ips.txt
+print_data=`cat sns_ips.txt`
+
+aws sns create-topic --name pipeline
+aws sns subscribe --topic-arn arn:aws:sns:us-west-2:596872254694:pipeline --protocol email --notification-endpoint mohammad.a.khan@capgemini.com
+aws sns publish --topic-arn arn:aws:sns:us-west-2:596872254694:pipeline --message "Pipeline details : $print_data" --subject "AWS SNS Testing"
+
+
+----------------------------------------------------------------------------In All instances---------------------------------------------------------
+
+
+----------------------------------------base stack-------------------------------------------------------
+#!/bin/bash
+public=`curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
+echo "basestack ip : $public" > sns_ips.txt
+aws s3 cp test.sh s3://sruthi-test/ --acl public-read-write
+---------------------------------------------------------------------------------------------------------
+
+
+----------------------------------------jenkins stack-------------------------------------------------------
+#!/bin/bash
+wget https://s3.amazonaws.com/sruthi-test/sns_ips.txt
+public=`curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
+echo "Jenkins ip : $public" >> sns_ips.txt
+aws s3 cp test.sh s3://sruthi-test/ --acl public-read-write
+---------------------------------------------------------------------------------------------------------
+
+
+----------------------------------------nexus stack-------------------------------------------------------
+#!/bin/bash
+wget https://s3.amazonaws.com/sruthi-test/sns_ips.txt
+public=`curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
+echo "Nexus ip : $public" >> sns_ips.txt
+aws s3 cp test.sh s3://sruthi-test/ --acl public-read-write
+---------------------------------------------------------------------------------------------------------
+
+
+----------------------------------------rundeck stack-------------------------------------------------------
+#!/bin/bash
+wget https://s3.amazonaws.com/sruthi-test/sns_ips.txt
+public=`curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
+echo "Rundeck ip : $public" >> sns_ips.txt
+aws s3 cp test.sh s3://sruthi-test/ --acl public-read-write
+---------------------------------------------------------------------------------------------------------
+
+
+command to fetch arn : sed -n 's/.*\(arn\)/\1/p' check.txt | grep -o '.*"' | sed 's/"//g'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

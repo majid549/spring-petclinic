@@ -1,0 +1,87 @@
+-----------------In a single instance-----------------
+
+wget sns_ips.txt
+print_data=`cat sns_ips.txt`
+
+aws sns create-topic --name pipeline
+aws sns subscribe --topic-arn arn:aws:sns:us-east-1:596872254694:pipeline --protocol email --notification-endpoint mohammad.a.khan@capgemini.com
+aws sns publish --topic-arn arn:aws:sns:us-east-1:596872254694:pipeline --message "Pipeline details : $print_data" --subject "AWS SNS Testing"
+
+
+-----------------In All instances-----------------
+
+#!/bin/bash
+wget test.sh
+public=`curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
+echo "BaseStack ip : $public" >> sns_ips.txt
+aws s3 cp sns_ips.txt s3://
+
+
+
+
+
+
+
+
+
+
+
+arn:aws:sns:us-east-1:596872254694:pipeline
+arn:aws:sns:us-east-1:596872254694:pipeline
+
+aws sns publish --topic-arn arn:aws:sns:us-east-1:596872254694:pipeline --message "Pipeline details : cat sns_ips.txt" --subject "AWS SNS Testing"
+
+
+sed -n -e '/arn/,/pipeline/p' sns_ips.txt
+
+
+sed -n 's/\(arn\).*/\1/p' check.txt 
+
+
+sed '/^START$/,/^END$/d' inputfile
+
+sed '/^arn$/,/^pipeline$/d' inputfile
+
+tr ': ' '[\n*]' <check.txt | cut -sd arn -f1-
+
+
+
+
+
+
+
+sed -n 's/.*\(arn\).*/\1/p' check.txt ----------------- arn
+
+sed -n 's/.*\(arn\)/\1/p' check.txt  ------------------ arn:aws:sns:us-east-1:596872254694:pipeline"
+
+
+
+ sed -n 's/.*\(arn\)/\1/p' check.txt | grep -o '.*"' abcd.txt | sed 's/"//g'
+
+
+
+
+
+
+aws sns publish --topic-arn arn:aws:sns:us-west-2:596872254694:pipeline --message "Pipeline details : \n$ips" --subject "AWS SNS Testing"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
